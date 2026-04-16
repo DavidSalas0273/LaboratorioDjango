@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('asistencia.urls')),
+    # Incluir la app 'asistencia' con namespace para poder usar 'asistencia:list'
+    path('', include(('asistencia.urls', 'asistencia'), namespace='asistencia')),
 ]

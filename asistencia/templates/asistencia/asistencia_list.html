@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Lista de Asistencias</title>
+  </head>
+  <body>
+    <h1>Asistencias</h1>
+    <p><a href="{% url 'asistencia:create' %}">Registrar nueva asistencia</a></p>
+    {% if items %}
+      <table border="1" cellpadding="4">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Documento</th>
+            <th>Correo</th>
+            <th>Fecha</th>
+            <th>Ingreso</th>
+            <th>Salida</th>
+            <th>Presente</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for a in items %}
+          <tr>
+            <td>{{ a.nombre_completo }}</td>
+            <td>{{ a.documento }}</td>
+            <td>{{ a.correo }}</td>
+            <td>{{ a.fecha }}</td>
+            <td>{{ a.hora_ingreso }}</td>
+            <td>{{ a.hora_salida }}</td>
+            <td>{{ a.presente }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No hay registros aún.</p>
+    {% endif %}
+  </body>
+</html>
